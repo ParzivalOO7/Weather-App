@@ -3,18 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Weather App</title>
+    <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="weather-app">
-      <h1>Weather App</h1>
-      <input type="text" id="cityInput" placeholder="Enter city name" />
-      <button id="searchBtn">Get Weather</button>
-      <div id="weatherResult"></div>
-    </div>
-
+    <div id="bg-overlay"></div>
     <div id="weather-animation"></div>
+
+    <div class="container">
+      <div class="card">
+        <p class="app-title">Weather</p>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="cityInput"
+            placeholder="Search city..."
+            autocomplete="off"
+          />
+          <button id="searchBtn" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </button>
+          <button id="locationBtn" aria-label="Use my location">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="3"/>
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="5" y2="12"/>
+              <line x1="19" y1="12" x2="22" y2="12"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="loader" class="loader hidden"></div>
+        <div id="errorMsg" class="error hidden"></div>
+
+        <div id="weatherResult" class="weather-result hidden">
+          <div class="location">
+            <span id="cityName"></span>
+            <span id="countryCode" class="country-badge"></span>
+          </div>
+
+          <div class="weather-icon" id="weatherIcon"></div>
+
+          <div class="temperature">
+            <span id="temp"></span>
+            <span class="unit">°C</span>
+          </div>
+
+          <div class="description" id="weatherDesc"></div>
+
+          <div class="stats-grid">
+            <div class="stat">
+              <span class="stat-label">Feels Like</span>
+              <span class="stat-value" id="feelsLike"></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Humidity</span>
+              <span class="stat-value" id="humidity"></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Wind</span>
+              <span class="stat-value" id="windSpeed"></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Pressure</span>
+              <span class="stat-value" id="pressure"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
