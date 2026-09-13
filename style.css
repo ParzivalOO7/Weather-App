@@ -276,7 +276,7 @@ input:focus-visible {
 .temperature {
   display: flex;
   align-items: flex-start;
-  gap: 3px;
+  gap: 10px;
   font-size: clamp(4.5rem, 16vw, 7rem);
   font-weight: 600;
   letter-spacing: -0.09em;
