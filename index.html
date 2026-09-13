@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -20,18 +20,28 @@
     <div id="weather-animation"></div>
     <div id="grain" aria-hidden="true"></div>
 
-    <div class="container">
-      <div class="card">
-        <p class="app-title">Weather</p>
+    <main class="container">
+      <section class="card" aria-label="Weather lookup">
+        <header class="app-header">
+          <div class="brand-lockup">
+            <span class="brand-mark" aria-hidden="true">+</span>
+            <div>
+              <p class="app-title">Weather desk</p>
+              <p class="app-subtitle">Live conditions, wherever you are</p>
+            </div>
+          </div>
+          <span class="live-status"><span class="live-dot"></span>Live</span>
+        </header>
 
-        <div class="search-bar">
+        <div class="search-bar" role="search">
+          <label class="sr-only" for="cityInput">Search for a city</label>
           <input
             type="text"
             id="cityInput"
-            placeholder="Search city..."
+            placeholder="Search a city"
             autocomplete="off"
           />
-          <button id="searchBtn" aria-label="Search">
+          <button id="searchBtn" aria-label="Search city">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"/>
               <line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -49,23 +59,28 @@
           </button>
         </div>
 
-        <div id="loader" class="loader hidden"></div>
-        <div id="errorMsg" class="error hidden"></div>
+        <div id="loader" class="loader hidden" role="status" aria-label="Loading weather"></div>
+        <div id="errorMsg" class="error hidden" role="alert"></div>
 
         <div id="weatherResult" class="weather-result hidden">
-          <div class="location">
-            <span id="cityName"></span>
-            <span id="countryCode" class="country-badge"></span>
+          <div class="weather-heading">
+            <div>
+              <p class="eyebrow">Current reading</p>
+              <div class="location">
+                <span id="cityName"></span>
+                <span id="countryCode" class="country-badge"></span>
+              </div>
+            </div>
+            <div class="weather-icon" id="weatherIcon" aria-hidden="true"></div>
           </div>
 
-          <div class="weather-icon" id="weatherIcon"></div>
-
-          <div class="temperature">
-            <span id="temp"></span>
-            <span class="unit">°C</span>
+          <div class="reading">
+            <div class="temperature">
+              <span id="temp"></span>
+              <span class="unit">°C</span>
+            </div>
+            <div class="description" id="weatherDesc"></div>
           </div>
-
-          <div class="description" id="weatherDesc"></div>
 
           <div class="stats-grid">
             <div class="stat">
@@ -86,8 +101,14 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
+        <footer class="card-footer">
+          <span>OpenWeather signal</span>
+          <span class="footer-rule"></span>
+          <span>Metric / live</span>
+        </footer>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
